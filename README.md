@@ -6,4 +6,4 @@ Requirement :
 3. django-Tweaks-Widget
 4. Pillow (if required).
 
-
+for Demo Site : http://laxman.pythonanywhere.com/home/
