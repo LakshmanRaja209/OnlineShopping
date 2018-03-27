@@ -1,0 +1,101 @@
+{% extends 'mericart/base.html' %}
+{% block title %}MERI CART | Home {% endblock%}
+{% block category %}
+{% for c in cat %}
+<li><a href="/search_c/{{c.id}}">{{c.category_name}}</a></li>
+{% endfor %}
+{% endblock%}
+
+{% block brand %}
+<ul class="nav nav-pills nav-stacked">
+        <li class="active" ><a href="#" style="background-color:black;">Brands</a></li>
+        {% for b in bra%}
+		<li><a href="/search/{{b.id}}" class="btn btn-default" style="color:black;">{{b.brand}}</a></li>
+        {% endfor %}
+</ul>
+{% endblock %}
+
+{% block style %} 
+h4{font-family:times roman;padding-left:15px;}
+h5{font-family:times roman;padding-left:15px;}
+
+.change:hover {
+    position:relative;
+    width:700px;
+    height:auto;
+    display:block;
+}
+
+{% endblock%}
+
+{% block script %} 
+function searchProduct(){
+	
+    var inputValue = document.getElementById('inputId').value;
+    if(inputValue <= {{pro.stock.stock_no}})
+	document.getElementById('go').href =  "/preview/{{pro.id}}/" + inputValue + "/";
+    else
+	alert("Please Enter total products less or equal to Stock available")
+	}
+	
+	window.setInterval(function()
+	{
+	$('#blinkText').toggle();
+	},500);
+{% endblock%}
+
+{% block content %}
+
+<div class="page-header">
+<ul class="progress-indicator"> 
+    <li class="completed"> <span class="bubble"></span> Product Preview {{pro.product_code}} </li> 
+    <li> <a href="/cart_buy/"><span class="bubble"></span></a> Checkout </li> 
+    <li> <span class="bubble"></span> Shipping </li> 
+    <li> <span class="bubble"></span> Pay </li> 
+    <li> <span class="bubble"></span> Finish </li> 
+</ul>
+</div>
+
+<div class="row">
+
+<div class="col-md-5">
+<img src="{{MEDIA_URL}}{{pro.photo}}" class="img-thumbnail change" width="306" height="236"/>
+</div>
+
+<div class="col-md-6 thumbnail">
+<h1 style="color:red;font-family:Times Roman;font-weight:3px;">Product Details</h1>
+<hr>
+<h4><strong>Product Name:</strong> {{pro.name}}</h4>
+<h4><strong>Product Code:</strong> {{pro.product_code}}</h4>
+<h4><strong>Product Brand:</strong> {{pro.brand.brand}}</h4>
+<h4><strong>Product Price:</strong> Rs. {{pro.price}}</h4>
+<h4><strong>Product Discount: <span style="color:red;" id="blinkText">{{pro.discount}} %</strong> </span></h4>
+<h4><strong>Stock Available:</strong> {{pro.stock.stock_no}}</h4>
+  <h5><strong> Enter the Total Number</strong> <input type="text" id="inputId" value="1" class="form-control" style="width:30%;"></h5>
+  <a href="/home/" class="btn btn-danger">Continue Shopping</a>
+    <a href="" id="go" onclick="searchProduct();" class="btn btn-danger">Add Cart</a>
+	  <a href="/cart_buy/" class="btn btn-danger">Buy Now</a>	 
+<hr>
+<ul class="nav nav-pills">
+    <li class="active"><a data-toggle="pill" href="#home">Product Details</a></li>
+    <li><a data-toggle="pill" href="#menu1">Brand Details</a></li>
+
+  </ul>
+  
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+	<hr>
+      <p>{{pro.description}}</p>
+    </div>
+    <div id="menu1" class="tab-pane fade">
+      <hr>
+	  <p>{{pro.brand.description}}</p>
+    </div>
+
+  </div>
+	  
+</div>
+
+</div>
+
+{% endblock %}

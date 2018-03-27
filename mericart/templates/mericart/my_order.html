@@ -1,0 +1,67 @@
+{% extends 'mericart/base.html' %}
+{% block title %}MERI CART | Home {% endblock%}
+{% block category %}
+{% for c in cat %}
+<li><a href="/search_c/{{c.id}}">{{c.category_name}}</a></li>
+{% endfor %}
+{% endblock%}
+
+{% block brand %}
+<ul class="nav nav-pills nav-stacked">
+        <li class="active" ><a href="#" style="background-color:black;">Brands</a></li>
+        {% for b in bra%}
+		<li><a href="/search/{{b.id}}" class="btn btn-default" style="color:black;">{{b.brand}}</a></li>
+        {% endfor %}
+</ul>
+{% endblock %}
+
+{% block style %} 
+td{margin:10px;}
+{% endblock%}
+
+{% block script %} 
+
+{% endblock%}
+
+{% block content %}
+
+<div class="thumbnail">
+<h2>My Orders <span class="badge">{{bill|length}}</span> </h2>	
+<hr>
+{% if bill %}
+<div class="table-responsive">	  
+<table class="table">
+    <thead>
+      <tr>
+		<th style="background-color:black;color:white;">Order Number</th>
+        <th style="background-color:black;color:white;">Order Date</th>
+		<th style="background-color:black;color:white;">Product Name</th>
+        <th style="background-color:black;color:white;">Product Code</th>
+		<th style="background-color:black;color:white;">Single Price</th>
+		<th style="background-color:black;color:white;">Item(s)</th>
+        <th style="background-color:black;color:white;">Price</th>
+		<th style="background-color:black;color:white;">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+	{% for i in bill %}
+      <tr>
+		<td style="background-color:#DA70D6;"><strong>{{i.order_no}}</strong></td>
+	  <td style="background-color:#7FFFD4;"><strong>{{i.order_date}}</strong></td>        
+		<td style="background-color:#E0EEEE;"><strong>{{i.product_name}}</strong></td>
+        <td style="background-color:white;">{{i.product_code}}</td>
+		<td style="background-color:#ACC5FD;">{{i.single_price}}</td>
+		<td style="background-color:#FFD39B;">{{i.quantity}}</td>
+        <td style="background-color:#FFB90F;"><strong>{{i.total_price}}</strong></td>
+		<td style="background-color:#228B22;"><strong>{{i.status}}</strong></td>
+      </tr>
+	{% endfor %}
+	
+	  </tbody>
+</table>
+{% else %}
+<strong> No orders found ! </strong>
+{% endif %}
+
+</div>
+{% endblock%}

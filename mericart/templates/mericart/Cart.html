@@ -1,0 +1,112 @@
+{% extends 'mericart/base.html' %}
+{% block title %}MERI CART | Home {% endblock%}
+{% block category %}
+{% for c in cat %}
+<li><a href="/search_c/{{c.id}}">{{c.category_name}}</a></li>
+{% endfor %}
+{% endblock%}
+
+{% block brand %}
+<ul class="nav nav-pills nav-stacked">
+        <li class="active" ><a href="#" style="background-color:black;">Brands</a></li>
+        {% for b in bra%}
+		<li><a href="/search/{{b.id}}" class="btn btn-default" style="color:black;">{{b.brand}}</a></li>
+        {% endfor %}
+</ul>
+{% endblock %}
+
+{% block style %} 
+td{margin:10px;}
+{% endblock%}
+
+{% block script %} 
+
+{% endblock%}
+
+{% block content %}
+<div class="page-header">
+    <ul class="progress-indicator">
+        <li class="completed"> <span class="bubble"></span> Shopping </li>
+        <li class="danger"> <a href="/cart_buy/"><span class="bubble"></span></a> Checkout </li>
+        <li> <span class="bubble"></span> Shipping </li>
+        <li> <span class="bubble"></span> Pay </li>
+        <li> <span class="bubble"></span> Finish </li>
+    </ul>
+</div>
+<div class="thumbnail">
+<h2> Cart Details <span class="badge">{{pro|length}}</span></h2>	
+<hr>		
+{% if pro %}	
+<div class="table-responsive">	  
+<table class="table table-hover">
+    <thead>
+      <tr>
+	  <th></th>
+        <th>Product Name</th>
+        <th>Product Code</th>
+		<th>Discount</th>
+		<th>Item(s)</th>
+        <th>Price</th>
+		<th>Total Price</th>
+		<th>Delete</th>
+		<th></th>
+      </tr>
+    </thead>
+    <tbody>
+	{% for i in pro %}
+      <tr>
+	  <td><img src="{{MEDIA_URL}}{{i.product.photo}}" width="40px" height="40px"/></td>
+        <td><strong>{{i.product.name}}</strong></td>
+        <td>{{i.product.product_code}}</td>
+		<td>{{i.product.discount}} %</td>
+		<td>{{i.total_no_product}}</td>
+        <td><strong>{{i.product.price}}</strong></td>
+		<td><strong>{{i.total_cost}}</strong></td>
+		<td><a href="/delete_item/{{i.id}}"><span class="glyphicon glyphicon-remove-circle"></span></a> </td>
+      </tr>
+	{% endfor %}
+	<tr>
+	<td colspan="6"><strong>Total</strong></td>
+	<td colspan="2"><strong>{{tot}}</strong></td>
+	<td></td>
+	</tr>
+	<tr>
+	<td colspan="5" style="text-align:center;"></td>
+	<td style=""><a href="/home/" class="btn btn-medium btn-danger">Continue Shopping</a></td>
+	<td style=""><a href="/shipping/" class="btn btn-medium btn-danger">Proceed</a></td>
+	</tr>
+	  </tbody>
+{% else %}
+<h5>No item(s) added to Cart</h5> 
+{% endif %}
+
+</table>
+</div>
+{% if prot %}				
+<hr>
+<h2>Last Purchased Details <span class="badge">{{prot|length}}</span> </h2>
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Product Code</th>
+                <th>Item(s)</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in prot %}
+            <tr>
+                <td>{{i.product.name}}</td>
+                <td>{{i.product.product_code}}</td>
+                <td>{{i.total_no_product}}</td>
+                <td>{{i.product.price}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+</div>
+{% endblock%}

@@ -1,0 +1,104 @@
+{% extends 'mericart/base.html' %}
+{% block title %}MERI CART | Home {% endblock%}
+{% block category %}
+{% for c in cat %}
+<li><a href="/search_c/{{c.id}}">{{c.category_name}}</a></li>
+{% endfor %}
+{% endblock%}
+
+{% block brand %}
+<ul class="nav nav-pills nav-stacked">
+        <li class="active" ><a href="#" style="background-color:black;">Brands</a></li>
+        {% for b in bra%}
+		<li><a href="/search/{{b.id}}" class="btn btn-default" style="color:black;">{{b.brand}}</a></li>
+        {% endfor %}
+</ul>
+{% endblock %}
+
+{% block style %} 
+
+{% endblock%}
+
+{% block script %} 
+
+{% endblock%}
+
+{% block content %}
+<div class="page-header">
+    <ul class="progress-indicator">
+        <li class="completed"> <span class="bubble"></span> Shopping </li>
+        <li class="danger"> <span class="bubble"></span> Checkout </li>
+        <li class="info"> <span class="bubble"></span> Shipping </li>
+        <li class="warning"> <span class="bubble"></span> Pay </li>
+        <li class="completed"> <span class="bubble"></span> Finish </li>
+    </ul>
+</div>
+<div class="row">
+
+<div class="col-md-5 thumbnail">
+<h3> Payment Mode</h3>
+<hr>
+<h5>Thank You for your Order
+
+<hr>Your order number is {{ord}}. We will send u email when product is delivered , and Please kept ready your total amount of Rs.{{tot}} </h5>
+</div>
+
+<div class="col-md-1">
+
+</div>
+
+<div class="col-md-5 thumbnail">
+<h4>Shipping Details</h4>
+<hr>
+<div class="thumbnail">
+Street: {{ship.street_add}}<br>
+Landmark: {{ship.land_mark}}<br>
+Country: {{ship.country}}<br>
+state: {{ship.state}}
+city: {{ship.city}}
+Postal Zip: {{ship.postel_pin}}
+Mobile Number: {{ship.mobile_no}}
+Alternative Number: {{ship.alternative_no}}
+</div>
+<hr>
+<div class="thumbnail">
+<h4> Cart Details </h4>	
+<hr>		
+<div class="table-responsive">	  
+<table class="table">
+    <thead>
+      <tr>
+	  
+        <th>Product Name</th>
+        <th>Product Code</th>
+		<th>Item(s)</th>
+        <th>Price</th>
+		<th></th>
+      </tr>
+    </thead>
+    <tbody>
+	{% for i in bill %}
+      <tr>
+	  
+        <td><strong>{{i.product_name}}</strong></td>
+        <td>{{i.product_code}}</td>
+		<td>{{i.quantity}}</td>
+        <td><strong>{{i.total_price}}</strong></td>
+      </tr>
+	{% endfor %}
+	<tr>
+	<td colspan="3"><strong>Grand Total</strong></td>
+	<td><strong>{{tot}}</strong></td>
+	</tr>
+	  </tbody>
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+{% endblock%}

@@ -1,0 +1,142 @@
+{% extends 'mericart/base.html' %}
+{% block title %}MERI CART | Home {% endblock%}
+{% block category %}
+{% for c in cat %}
+<li><a href="/search_c/{{c.id}}">{{c.category_name}}</a></li>
+{% endfor %}
+{% endblock%}
+
+{% block brand %}
+<ul class="nav nav-pills nav-stacked">
+        <li class="active" ><a href="#" style="background-color:black;">Brands</a></li>
+        {% for b in bra%}
+		<li><a href="/search/{{b.id}}" class="btn btn-default" style="color:black;">{{b.brand}}</a></li>
+        {% endfor %}
+</ul>
+{% endblock %}
+
+{% block style %} 
+
+{% endblock%}
+
+{% block script %} 
+
+{% endblock%}
+
+{% block content %}
+<div class="page-header">
+    <ul class="progress-indicator">
+        <li class="completed"> <span class="bubble"></span> Shopping </li>
+        <li class="danger"> <a href="/cart_buy/"><span class="bubble"></span></a> Checkout </li>
+        <li class="info"> <a href="/shipping/"><span class="bubble"></span></a> Shipping </li>
+        <li> <span class="bubble"></span> Pay </li>
+        <li> <span class="bubble"></span> Finish </li>
+    </ul>
+</div>
+<div class="row">
+<div class="col-md-5 thumbnail">
+	
+	<div class="thumbnail">
+	<p>
+	<h2>Current Address</h2>
+	<hr>
+	<h4>{{user.get_full_name}}</h4>
+	
+	Address : {{user.userprofile.address}}
+	<br>
+	Country : {{user.userprofile.country}}
+	<br>
+	state : {{user.userprofile.state}}
+	<br>
+	City : {{user.userprofile.city}}
+	<br>
+	Zip Code : {{user.userprofile.pin_code}}
+	</P>
+	</div>
+	
+	
+	<div class="thumbnail">
+	<h2><strong style="color:red;font-size:20px;">Shipping Details</strong> </h2>				  
+	<hr>
+	<form class="form" method="post" action="">
+	{% csrf_token %}
+	<div class="form-group">
+    <input type="text" id="name" class="form-control" placeholder="Street" name="street" autocomplete="off" required>
+    </div>
+	
+	<div class="form-group">
+    <input type="text" id="name" class="form-control" placeholder="Landmark" name="landmark" autocomplete="off" required>
+    </div>
+	
+	<div class="form-group">
+    <input type="text" id="name" class="form-control" placeholder="Country" name="country" autocomplete="off" required>
+    </div>	
+	
+	<div class="form-group">
+    <input type="text" id="name" class="form-control" placeholder="State" name="state" autocomplete="off" required>
+    </div>
+	
+	<div class="form-group">
+    <input type="text" id="name" class="form-control" placeholder="city" name="city" autocomplete="off" required>
+    </div>
+	
+	<div class="form-group">
+    <input type="text" id="name" class="form-control" placeholder="Postal Zip Code" name="zip" autocomplete="off" required>
+    </div>
+
+	<div class="form-group">
+    <input type="text" id="name" class="form-control" placeholder="Mobile Number" name="mobile" autocomplete="off" required>
+    </div>
+	
+	<div class="form-group">
+    <input type="text" id="name" class="form-control" placeholder="Alternative Mobile Number" name="altmobile" autocomplete="off" required>
+    </div>
+	
+	<div class="form-group">
+	<input type="submit" class="btn btn-success" value="Sumbit"> 
+	<input type="reset" class="btn btn-info" value="Reset"> 
+	<a href="/home/" class="btn btn-danger">Cancel</a>
+	</div>
+	
+	</div>
+	</div>
+
+<div class="col-md-7 thumbnail">
+<div class="thumbnail">
+<h4> Cart Details </h4>	
+<hr>		
+<div class="table-responsive">	  
+<table class="table">
+    <thead>
+      <tr>
+	  <th></th>
+        <th>Product Name</th>
+        <th>Product Code</th>
+		<th>Item(s)</th>
+        <th>Price</th>
+		<th></th>
+      </tr>
+    </thead>
+    <tbody>
+	{% for i in car %}
+      <tr>
+	  <td><img src="{{MEDIA_URL}}{{i.product.photo}}" width="40px" height="40px"/></td>
+        <td><strong>{{i.product.name}}</strong></td>
+        <td>{{i.product.product_code}}</td>
+		<td>{{i.total_no_product}}</td>
+        <td><strong>{{i.total_cost}}</strong></td>
+      </tr>
+	{% endfor %}
+	<tr>
+	<td colspan="4"><strong>Total</strong></td>
+	<td><strong>{{tot}}</strong></td>
+	</tr>
+	  </tbody>
+</table>
+<a href="/cart_buy/" class="btn btn-primary">Edit Cart</a>
+</div>
+
+</div>
+</div>
+	</div>
+{% endblock%}

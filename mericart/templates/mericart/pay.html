@@ -1,0 +1,183 @@
+{% extends 'mericart/base.html' %}
+{% block title %}MERI CART | Home {% endblock%}
+{% block category %}
+{% for c in cat %}
+<li><a href="/search_c/{{c.id}}">{{c.category_name}}</a></li>
+{% endfor %}
+{% endblock%}
+
+{% block brand %}
+<ul class="nav nav-pills nav-stacked">
+        <li class="active" ><a href="#" style="background-color:black;">Brands</a></li>
+        {% for b in bra%}
+		<li><a href="/search/{{b.id}}" class="btn btn-default" style="color:black;">{{b.brand}}</a></li>
+        {% endfor %}
+</ul>
+{% endblock %}
+
+{% block style %} 
+
+{% endblock%}
+
+{% block script %} 
+
+  function itemChange(sender) {
+    var c = document.getElementById("car");
+    if (sender.value > 1) {
+        c.style.visibility = "visible";
+    } else {             
+        c.style.visibility = "hidden";
+    }
+}
+  
+  function check()
+  {
+  var c = document.getElementById('iban').value.length;
+  if (c < 15) {
+  var m = document.getElementById("msg");
+  m.style.visibility = "visible";
+  }
+  else
+  {
+  var m = document.getElementById("msg");
+  m.style.visibility = "visible";
+  }
+  else
+  {
+  var m = document.getElementById("msg");
+  m.style.visibility = "hidden";
+  }
+  }
+
+{% endblock%}
+
+{% block content %}
+<div class="page-header">
+    <ul class="progress-indicator">
+        <li class="completed"> <span class="bubble"></span> Shopping </li>
+        <li class="danger"> <span class="bubble"></span> Checkout </li>
+        <li class="info"> <span class="bubble"></span> Shipping </li>
+        <li class="warning"> <span class="bubble"></span> Pay </li>
+        <li> <span class="bubble"></span> Finish </li>
+    </ul>
+</div>
+
+<div class="row">
+
+<div class="col-md-5 thumbnail">
+<h3> Payment Mode</h3>
+<hr>
+<div class="col-md-10">
+<form action="" method="post" class="form">
+{% csrf_token %}
+<div class="form-group">
+  <select class="form-control" name="pay_type" onchange="itemChange(this)" placeholder="Choose Payment Type">
+    <option value="1" >Cash on Delivery</option>
+    <option value="2" >Debit Card</option>
+    <option value="3" >Credit Card</option>
+	</select>
+</div>
+
+<div id="car" style="visibility:hidden">
+
+<div class="form-group">
+<input type="text" id="iban" onblur="check()" class="form-control" name="card" placeholder="XXXX XXXX XXXX XXXX" />
+</div>
+
+
+<div class="form-group">
+<div class="form-inline">
+<input style="width:25%;" type="number" class="form-control" name="cvv" placeholder="CVV" />
+<input style="width:30%;" type="text" class="form-control" name="expiry" placeholder="MM/YY"/>
+</div>
+</div>
+
+</div>
+
+<div class="form-group">
+<input type="submit" class="btn btn-success" value="submit" style="width:100%;"/>
+</div>
+
+<div id = "msg" class="alert alert-danger" style="visibility:hidden">
+  <strong>Invalid!</strong> Card Number.
+</div>
+
+</form>
+</div>
+</div>
+
+<div class="col-md-1">
+
+</div>
+
+<div class="col-md-5 thumbnail">
+<h4>Shipping Details</h4>
+<hr>
+<div class="thumbnail">
+Street: {{ship.street_add}}<br>
+Landmark: {{ship.land_mark}}<br>
+Country: {{ship.country}}<br>
+state: {{ship.state}}
+city: {{ship.city}}
+Postal Zip: {{ship.postel_pin}}
+Mobile Number: {{ship.mobile_no}}
+Alternative Number: {{ship.alternative_no}}
+</div>
+<hr>
+<div class="thumbnail">
+<h4> Cart Details </h4>	
+<hr>		
+<div class="table-responsive">	  
+<table class="table">
+    <thead>
+      <tr>
+	  <th></th>
+        <th>Product Name</th>
+        <th>Product Code</th>
+		<th>Item(s)</th>
+        <th>Price</th>
+		<th></th>
+      </tr>
+    </thead>
+    <tbody>
+	{% for i in car %}
+      <tr>
+	  <td><img src="{{MEDIA_URL}}{{i.product.photo}}" width="40px" height="40px"/></td>
+        <td><strong>{{i.product.name}}</strong></td>
+        <td>{{i.product.product_code}}</td>
+		<td>{{i.total_no_product}}</td>
+        <td><strong>{{i.total_cost}}</strong></td>
+      </tr>
+	{% endfor %}
+	<tr>
+	<td colspan="4"><strong>Total</strong></td>
+	<td><strong>{{tot}}</strong></td>
+	</tr>
+	  </tbody>
+</table>
+<a href="/cart_buy/" class="btn btn-primary">Edit Cart</a>
+</div>
+
+</div>
+
+</div>
+
+
+
+<script type="text/javascript">
+ 
+ function itemChange(sender) {
+    var c = document.getElementById("car");
+    if (sender.value > 1) {
+        c.style.visibility = "visible";
+    } else {             
+        c.style.visibility = "hidden";
+    }
+}
+  
+document.getElementById('iban').addEventListener('input', function (e) {
+  e.target.value = e.target.value.replace(/[^\dA-Z]/g, '').replace(/(.{4})/g, '$1 ').trim();
+});
+ 
+</script>
+{% endblock%}

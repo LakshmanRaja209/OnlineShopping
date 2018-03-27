@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+  <title>MERI CART | Register</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+ <link rel="Shortcut icon" href="{% static 'testapp/1025.png' %}">
+  <style type="text/css">
+     @import url(http://fonts.googleapis.com/css?family=Exo:100,200,400);
+    @import url(http://fonts.googleapis.com/css?family=Indie+Flower);
+    @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
+
+body{
+    background: url('http://iriscommunications.com.pk/blog/wp-content/uploads/2015/03/Online-shopping-trends.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    margin-top: 30px;
+}
+h1{
+    font-family: 'Exo', sans-serif;
+    color: #fff;
+}
+span{
+	color: #5379fa !important;
+}
+
+input[type='submit']{-webkit-border-radius: 25px;border-radius: 25px;font-family:'Lucida Calligraphy','Indie Flower', cursive;width: 100%;background: rgba(255,255,255,0.4); font-size: medium; font-weight: 400;}
+  </style>
+  
+  <script type="text/javascript">
+function capitaliseName()
+{
+    var str = document.getElementById("name").value;
+    document.getElementById("name").value = str.toLowerCase();
+}
+</script>
+
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+        <div class="col-md-4">
+            </div>
+
+ <div class="col-md-4" style="background: rgba(255,255,255,0.9);border-radius:15px;padding:15px;">
+ <form role="form" action="" autocomplete="off" method='post'>
+  {% csrf_token %}
+    <h1 style="text-align: center;color: red;" >MERI <span>CART</span></h1>
+    <h5 style="font-family:'Lucida Calligraphy','Indie Flower', cursive; text-align: center; color: black !important;" >Shop and Enjoy Our Cart</h5>
+
+    <div class="form-group">
+    <input type="text" id="name" class="form-control" placeholder="First Name"  name="firstname" autocomplete="off" required style="background: rgba(255,255,255,0.4);">
+    </div>
+
+	<div class="form-group">
+    <input type="text" id="name" class="form-control" placeholder="Last Name"  name="lastname" autocomplete="off" required style="background: rgba(255,255,255,0.4);">
+    </div>
+	
+    <div class="form-group">
+    <input type="email" id="name" class="form-control" placeholder="Email" onkeyup = "capitaliseName()" name="email" autocomplete="off" required style="background: rgba(255,255,255,0.4);">
+    </div>
+	
+    <div class="form-group">
+    <input type="text" id="name" class="form-control" placeholder="Username" onkeyup = "capitaliseName()" name="username" autocomplete="off" required style="background: rgba(255,255,255,0.4);">
+    </div>
+
+    <div class="form-group">
+    <input type="password" class="form-control" placeholder="Password" name="password" autocomplete="off" required style="background: rgba(255,255,255,0.4);">
+    </div>
+	
+    <div class="form-group">
+    <select name="gender" tabindex="8" required="" class="form-control" style="background: rgba(255,255,255,0.4);">
+            <option value="select" >I am..</option>
+            <option value="Male" >Male</option>
+            <option value="Female" >Female</option>
+    </select>
+    </div>
+
+    <div class="form-group">
+    <input type="text" id="name" class="form-control" placeholder="Mobile Number" name="phno" autocomplete="off" required style="background: rgba(255,255,255,0.4);">
+    </div>
+
+	<div class="form-group">
+    <input type="text" id="name" class="form-control" placeholder="Address" name="add" autocomplete="off" required style="background: rgba(255,255,255,0.4);">
+    </div>
+	
+    <div class="form-group">
+    <input type="text" id="name" class="form-control" placeholder="Country"  name="country" autocomplete="off" required style="background: rgba(255,255,255,0.4);">
+    </div>
+	
+    <div class="form-group">
+    <input type="text" id="name" class="form-control" placeholder="State" name="state" autocomplete="off" required style="background: rgba(255,255,255,0.4);">
+    </div>
+
+    <div class="form-group">
+    <input type="text" id="name" class="form-control" placeholder="City" name="city" autocomplete="off" required style="background: rgba(255,255,255,0.4);">
+    </div>
+
+    <div class="form-group">
+    <input type="text" id="name" class="form-control" placeholder="Pin Code" name="pin_code" autocomplete="off" required style="background: rgba(255,255,255,0.4);">
+    </div>
+	
+	<div class="form-group">
+    <input type="submit" value="Register" class="btn btn-default" />
+	</div>
+	<div class="form-group">
+	 <a href="/login/" class="btn btn-default">Login </a>
+	 </div>
+ </form>
+ <br>
+ 
+   {% if message %}
+   <div class="alert alert-danger">
+     {{ message }}
+    </div>
+    {% endif %}
+    
+
+
+</div>
+        
+<div class="col-md-4">
+</div>
+        
+        
+</div>
+</div>
+</body>
+</html>

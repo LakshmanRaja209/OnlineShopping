@@ -1,0 +1,395 @@
+﻿{% load tempaltes_extras %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %} {% endblock%}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="Shortcut icon" href="{{STATIC_URL}}img/Mc.png">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}css/progress-wizard.min.css" rel="stylesheet">
+    <style type="text/css">
+        {
+            % block style %
+        }
+
+        {
+            % endblock%
+        }
+
+        .full {
+            width: 100%;
+        }
+
+        .gap {
+            height: 30px;
+            width: 100%;
+            clear: both;
+            display: block;
+        }
+
+        .footer {
+            background: #EDEFF1;
+            height: auto;
+            padding-bottom: 30px;
+            position: relative;
+            width: 100%;
+            border-bottom: 1px solid #CCCCCC;
+            border-top: 1px solid #DDDDDD;
+        }
+
+            .footer p {
+                margin: 0;
+            }
+
+            .footer img {
+                max-width: 100%;
+            }
+
+            .footer h3 {
+                border-bottom: 1px solid #BAC1C8;
+                color: #54697E;
+                font-size: 18px;
+                font-weight: 600;
+                line-height: 27px;
+                padding: 40px 0 10px;
+                text-transform: uppercase;
+            }
+
+            .footer ul {
+                font-size: 13px;
+                list-style-type: none;
+                margin-left: 0;
+                padding-left: 0;
+                margin-top: 15px;
+                color: #7F8C8D;
+            }
+
+                .footer ul li a {
+                    padding: 0 0 5px 0;
+                    display: block;
+                }
+
+            .footer a {
+                color: #78828D
+            }
+
+        .supportLi h4 {
+            font-size: 20px;
+            font-weight: lighter;
+            line-height: normal;
+            margin-bottom: 0 !important;
+            padding-bottom: 0;
+        }
+
+        .newsletter-box input#appendedInputButton {
+            background: #FFFFFF;
+            display: inline-block;
+            float: left;
+            height: 30px;
+            clear: both;
+            width: 100%;
+        }
+
+        .newsletter-box .btn {
+            border: medium none;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            -o-border-radius: 3px;
+            -ms-border-radius: 3px;
+            border-radius: 3px;
+            display: inline-block;
+            height: 40px;
+            padding: 0;
+            width: 100%;
+            color: #fff;
+        }
+
+        .newsletter-box {
+            overflow: hidden;
+        }
+
+        .bg-gray {
+            background-image: -moz-linear-gradient(center bottom, #BBBBBB 0%, #F0F0F0 100%);
+            box-shadow: 0 1px 0 #B4B3B3;
+        }
+
+        .social li {
+            background: none repeat scroll 0 0 #B5B5B5;
+            border: 2px solid #B5B5B5;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            -o-border-radius: 50%;
+            -ms-border-radius: 50%;
+            border-radius: 50%;
+            float: left;
+            height: 36px;
+            line-height: 36px;
+            margin: 0 8px 0 0;
+            padding: 0;
+            text-align: center;
+            width: 36px;
+            transition: all 0.5s ease 0s;
+            -moz-transition: all 0.5s ease 0s;
+            -webkit-transition: all 0.5s ease 0s;
+            -ms-transition: all 0.5s ease 0s;
+            -o-transition: all 0.5s ease 0s;
+        }
+
+            .social li:hover {
+                transform: scale(1.15) rotate(360deg);
+                -webkit-transform: scale(1.1) rotate(360deg);
+                -moz-transform: scale(1.1) rotate(360deg);
+                -ms-transform: scale(1.1) rotate(360deg);
+                -o-transform: scale(1.1) rotate(360deg);
+            }
+
+            .social li a {
+                color: #EDEFF1;
+            }
+
+            .social li:hover {
+                border: 2px solid #2c3e50;
+                background: #2c3e50;
+            }
+
+            .social li a i {
+                font-size: 16px;
+                margin: 0 0 0 5px;
+                color: #EDEFF1 !important;
+            }
+
+        .footer-bottom {
+            background: #E3E3E3;
+            border-top: 1px solid #DDDDDD;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+            .footer-bottom p.pull-left {
+                padding-top: 6px;
+            }
+
+        .payments {
+            font-size: 1.5em
+        }
+
+        a > img {
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+    </style>
+
+    <script type="text/javascript">
+
+
+    </script>
+
+</head>
+<body>
+
+    <div style="padding:10px;">
+
+        <strong>Need Help ?</strong> Call Us <strong style="color:red;font-size:15px;">Toll Free - 1800-6666-6666</strong>
+
+
+
+
+    </div>
+    <marquee behavior="scroll" direction="left" style="color:white;background-color:#333;"><strong><span style="color:red;">Biggest Sales </span> upto 70 % offer on every products, Buy now Computer table upto 50% discount, Luxury Sofa upto 70% discount, Chairs upto 50% discount, Beds upto 40% discount, Home decorates upto 10% discount ever in this session Shop now....! Buy any product get Free Shipping to you Home</strong> </marquee>
+
+    <!-- Latest Navigation-->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a href="/home/"><img class="img-responsive2" style="width:120px;" src="{{STATIC_URL}}img/Mc.png"></a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/home/"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-th"></span> Categories<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            {% block category %} {% endblock%}
+                        </ul>
+                    </li>
+
+                    <div class="pull-right">
+                        <form class="navbar-form" role="search" method="post" action="/search/">
+                            {% csrf_token %}
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search" name="q">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+
+                    {% if user.is_authenticated %}
+                    <li><a href="/orders/"><span class="glyphicon glyphicon-heart-empty"></span> My Orders</a></li>
+                    <li><a href="/cart_buy/"><span class="glyphicon glyphicon-ok-sign"></span> Checkout</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <span class="glyphicon glyphicon-shopping-cart"></span>  Cart <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            {% for i in user.cart_set.all %}
+                            {% if i.purchased != True %}
+                            <li><a class="btn btn-info" href="/preview/{{i.product.id}}">{{i.product.name}} {{i.product.product_code}} - RS.{{i.product.price}}</a></li>
+                            {% endif %}
+                            {% empty %}
+                            <li><a class="btn btn-info" href="#">Sorry no items as been added.</a></li>
+                            {% endfor %}
+                            {% if user.is_authenticated %}
+                            <li><a class="btn btn-danger" href="/cart_buy/">Buy Now</a></li>
+                            {% endif %}
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-cog"></span> Settings<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Welcome {{user.get_full_name}}</a></li>
+                            <li><a href="/ChangePassword/"><span class="glyphicon glyphicon-lock"></span> Change Password</a></li>
+                            <li><a href="/logout/"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                        </ul>
+                    </li>
+
+                    {% else %}
+
+                    <li><a href="/login/"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    <li><a href="/register/"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    {% endif%}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- End of Latest Code-->
+
+
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-md-2">
+                {% block brand %}
+
+                {% endblock %}
+
+            </div>
+
+            <div class="col-md-10">
+                {% block content %}
+                {% endblock %}
+            </div>
+
+        </div>
+    </div>
+    <footer>
+        <div class="footer" id="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
+                        <h3> Information </h3>
+                        <ul>
+                            <li> <a href="#"> About Us </a> </li>
+                            <li> <a href="#"> Customer Service </a> </li>
+                            <li> <a href="#"> Orders and Returns </a> </li>
+                            <li> <a href="#"> contact Us </a> </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
+                        <h3> Why From Us </h3>
+                        <ul>
+                            <li> <a href="#"> About Us </a> </li>
+                            <li> <a href="#"> Customer Service </a> </li>
+                            <li> <a href="#"> Privicy Policy </a> </li>
+                            <li> <a href="#"> Site Map </a> </li>
+                            <li> <a href="#"> Search Term </a> </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
+                        <h3> My Account </h3>
+                        <ul>
+                            <li> <a href="/register/"> Sign In </a> </li>
+                            <li> <a href="/cart_buy/"> View Cart </a> </li>
+                            <li> <a href="#"> My Wishlist </a> </li>
+                            <li> <a href="#"> Track My Order </a> </li>
+                            <li> <a href="#"> Help </a> </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
+                        <h3>Contact Us</h3>
+                        <ul>
+                            <li>+91-95455 62555</li>
+                            <li>Toll Free : 1800 6666 6666</li>
+                            <li>Email Us: mericartfurnitures@gmail.com</li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 ">
+                        <h3> Subscribe </h3>
+                        <ul>
+                            <li>
+                                <div class="input-append newsletter-box text-center">
+                                    <input type="text" class="full text-center" placeholder="Email ">
+                                    <button class="btn bg-gray" type="button">Subscribe Here</i> </button>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="social">
+                            <li><a href="#"> <i class=" fa fa-facebook">   </i> </a> </li>
+                            <li> <a href="#"> <i class="fa fa-twitter">   </i> </a> </li>
+                            <li> <a href="#"> <i class="fa fa-google-plus">   </i> </a> </li>
+                            <li> <a href="#"> <i class="fa fa-pinterest">   </i> </a> </li>
+                            <li> <a href="#"> <i class="fa fa-youtube">   </i> </a> </li>
+                        </ul>
+                    </div>
+                </div>
+                <!--/.row-->
+            </div>
+            <!--/.container-->
+        </div>
+        <!--/.footer-->
+        <div class="footer-bottom">
+            <div class="container-fluid">
+                <div id="googleMap" style="width:100%;height:400px;"></div>
+
+                <script>
+                    function myMap() {
+                        var myLatLng = { lat: 12.9150164, lng: 77.7238727 };
+
+                        var map = new google.maps.Map(document.getElementById('googleMap'), {
+                            zoom: 12,
+                            center: myLatLng
+                        });
+
+                        var marker = new google.maps.Marker({
+                            position: myLatLng,
+                            map: map,
+                            title: 'Meri Cart'
+                        });
+                    }
+                </script>
+
+                <script src="https://maps.googleapis.com/maps/api/js?KEY_OR_CLIENT=AIzaSyAZCk5L16mlogEC6nEmX_Z2fiYeQa_Fjy8&callback8&callback=myMap"></script>
+            </div>
+            <div class="container">
+                <p class="pull-left"> Copyright © MeriCart. All right reserved. </p> <div class="pull-right"> <ul class="nav nav-pills payments"> <li><i class="fa fa-cc-visa"></i></li> <li><i class="fa fa-cc-mastercard"></i></li> <li><i class="fa fa-cc-amex"></i></li> <li><i class="fa fa-cc-paypal"></i></li> </ul> </div>
+            </div>
+        </div>
+        <!--/.footer-bottom-->
+    </footer>
+</body>
+</html>
